@@ -1,0 +1,63 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    ".env"
+  ],
+  "globalEnv": [
+    "NODE_ENV",
+    "DATABASE_URL",
+    "REDIS_URL",
+    "API_INTERNAL_URL",
+    "NEXT_PUBLIC_API_URL",
+    "WEB_ORIGIN",
+    "API_PORT",
+    "AUTH_MODE",
+    "DEV_USER_ID",
+    "ADMIN_USER_IDS",
+    "AI_MODE",
+    "OPENAI_API_KEY",
+    "OPENAI_CHAT_MODEL",
+    "OPENAI_EXTRACTION_MODEL",
+    "OPENAI_EMBEDDING_MODEL",
+    "EMBEDDING_DIMENSIONS",
+    "WORKER_MODE",
+    "LOG_LEVEL"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false,
+      "persistent": true
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "@whats-new/database#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        "src/generated/**"
+      ]
+    }
+  }
+}

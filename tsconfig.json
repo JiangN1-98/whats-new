@@ -1,0 +1,15 @@
+{
+  "extends": "@whats-new/tsconfig/base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "tests/**/*.ts",
+    "*.config.ts"
+  ]
+}

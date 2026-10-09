@@ -1,0 +1,30 @@
+{
+  "name": "@whats-new/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "fixture:smoke": "tsx src/fixture-smoke.ts"
+  },
+  "dependencies": {
+    "bullmq": "5.81.5",
+    "ioredis": "5.11.1",
+    "@whats-new/config": "workspace:*",
+    "@whats-new/shared": "workspace:*",
+    "@whats-new/source-providers": "workspace:*",
+    "@whats-new/ai": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "@types/node": "24.19.1",
+    "tsx": "4.23.15",
+    "eslint": "9.39.4",
+    "@whats-new/tsconfig": "workspace:*",
+    "@whats-new/eslint-config": "workspace:*"
+  }
+}

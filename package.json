@@ -1,0 +1,46 @@
+{
+  "name": "whats-new",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=24.21.0 <25",
+    "pnpm": ">=10.34.6 <11"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint && eslint scripts tests *.ts *.mjs",
+    "typecheck": "turbo run typecheck && tsc --noEmit -p tsconfig.json",
+    "test": "turbo run build --filter=@whats-new/ai... && vitest run",
+    "test:integration": "turbo run build --filter=@whats-new/database... --filter=@whats-new/worker... && node scripts/integration.mjs",
+    "test:e2e": "turbo run build --filter=@whats-new/api... && playwright test",
+    "fixture:smoke": "turbo run build --filter=@whats-new/worker... && pnpm --filter @whats-new/worker fixture:smoke",
+    "infra:up": "docker compose up -d --wait",
+    "infra:down": "docker compose down",
+    "db:generate": "turbo run build --filter=@whats-new/config && pnpm --filter @whats-new/database db:generate",
+    "db:migrate": "turbo run build --filter=@whats-new/config && pnpm --filter @whats-new/database db:migrate",
+    "db:deploy": "turbo run build --filter=@whats-new/config && pnpm --filter @whats-new/database db:deploy",
+    "db:seed": "turbo run build --filter=@whats-new/config && pnpm --filter @whats-new/database db:seed",
+    "db:validate": "turbo run build --filter=@whats-new/config && pnpm --filter @whats-new/database db:validate"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "@types/node": "24.19.1",
+    "turbo": "2.11.7",
+    "tsx": "4.23.15",
+    "vitest": "5.0.3",
+    "eslint": "9.39.4",
+    "@playwright/test": "1.64.0",
+    "@whats-new/eslint-config": "workspace:*",
+    "@whats-new/tsconfig": "workspace:*",
+    "@whats-new/config": "workspace:*",
+    "@whats-new/database": "workspace:*",
+    "@whats-new/shared": "workspace:*",
+    "@whats-new/ai": "workspace:*",
+    "@whats-new/source-providers": "workspace:*",
+    "bullmq": "5.81.5",
+    "ioredis": "5.11.1"
+  }
+}
